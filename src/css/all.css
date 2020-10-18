@@ -41,16 +41,12 @@
     width: 500px;
     height: 50px;
     color: #818181;
-    font-size: 14px;
+    font-size: 15px;
     border: none;
-    border-bottom: 1px #000 solid;
+    border-bottom: 1px rgb(141, 141, 141) solid;
 }
 
 .container-page-limits {
     margin-top: 10px;
     margin-left: 29.5em;
-}
-
-.container-search > input:focus {
-    border: none;
 }
