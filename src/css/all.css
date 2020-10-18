@@ -1,10 +1,56 @@
 .acid-logo {
-    height: 100px;
+    height: 80px;
     width: 300px;
 }
 
 .logo-container {
-    background-color: black;
+    background-color: rgb(41, 41, 41);
     width: 100%;
     margin: auto;
+    text-align: left;
+}
+
+.green {
+    color: #39b54a;
+}
+
+.table {
+    border-collapse: collapse;
+    box-shadow: 2px 2px 5px #818181;
+}
+
+.table ,th, td {
+    border-bottom: 1px solid rgb(41, 41, 41);
+    padding: 1em;
+}
+
+.table-container {
+    text-align: center;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+.container-search {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container-search > input {
+    height: 30px;
+    width: 500px;
+    height: 50px;
+    color: #818181;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px #000 solid;
+}
+
+.container-page-limits {
+    margin-top: 10px;
+    margin-left: 29.5em;
+}
+
+.container-search > input:focus {
+    border: none;
 }
