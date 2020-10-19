@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 //import data from './mockData.json';
 import './css/all.css';
 import Spinner from './components/Spinner';
+import NewUser from './components/NewUser';
 
 class App extends Component {
     state = {
@@ -86,6 +87,7 @@ class App extends Component {
                     data={this.state.users}
                     removeUser={this.removeUser}
                 />
+                <NewUser />
                 <PageLimits 
                     changePage={this.changePage} 
                     actualPage={this.state.actualPage} 

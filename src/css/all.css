@@ -127,11 +127,43 @@
     position:relative;
     margin: auto;
     margin-top: 20%;
-  }
-  
-  @keyframes spin{
+}
+
+@keyframes spin{
     0%{
-      background:transparent;
-      transform: rotate(720deg); 
+        background:transparent;
+        transform: rotate(720deg); 
     }
-  }
+}
+
+.container-register > button{
+    background: #333333;
+    color: #fff;
+    font-size: 13px;
+    border: 3px solid #333333;
+    border-radius: 0;
+    outline: none;
+    font-weight: 700;
+    transition: all 0.5s ease;
+    font-family: "Poppins Light";
+    margin-left: 215px;
+    margin-top: 20px;
+}
+
+.container-register > button:hover {
+    cursor: pointer;
+    background: #39b54a;
+    border-color: #39b54a;
+    color: #333333;
+    text-decoration: none;
+}
+
+.user-form {
+    text-align: left;
+    margin: 40px;
+}
+
+.modalContainer > div {
+    border-radius: 10px;
+    width: 400px;
+}
