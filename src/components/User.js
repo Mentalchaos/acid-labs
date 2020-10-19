@@ -8,7 +8,7 @@ const User = ({ id, name, city, email, phone, handleChange, removeUser }) => {
             <td><input className="inputValue" id={`city-${id}`} defaultValue={city} onChange={ handleChange } /></td>
             <td><input className="inputValue" id={`phone-${id}`} defaultValue={phone} onChange={ handleChange } /></td>
             <td className="container-buttons">
-                <button id={`button-${id}`} onClick={removeUser}>Remove</button>
+                <button className="remove-button" id={`button-${id}`} onClick={removeUser}>Remove</button>
             </td>
         </tr>
     )
