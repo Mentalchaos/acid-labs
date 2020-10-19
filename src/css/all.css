@@ -68,7 +68,7 @@
 
 .container-page-limits {
     margin-top: 10px;
-    margin-left: 71.5em;
+    text-align: center;
 }
 
 .container-footer {
@@ -90,7 +90,7 @@
     color: #39b54a;
 }
 
-.remove-button {
+.remove-button, .change-page-button {
     background: #333333;
     color: #fff;
     font-size: 13px;
@@ -100,6 +100,14 @@
     font-weight: 700;
     transition: all 0.5s ease;
     font-family: "Poppins Light";
+}
+
+.change-page-button:hover {
+    cursor: pointer;
+    background: #39b54a;
+    border-color: #39b54a;
+    color: #333333;
+    text-decoration: none;
 }
 
 .remove-button:hover {
@@ -146,7 +154,6 @@
     font-weight: 700;
     transition: all 0.5s ease;
     font-family: "Poppins Light";
-    margin-left: 215px;
     margin-top: 20px;
 }
 
@@ -166,4 +173,8 @@
 .modalContainer > div {
     border-radius: 10px;
     width: 400px;
+}
+
+.container-register {
+    text-align: center;
 }
