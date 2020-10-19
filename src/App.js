@@ -6,6 +6,7 @@ import PageLimits from './components/PageLimits';
 import Footer from './components/Footer';
 //import data from './mockData.json';
 import './css/all.css';
+import Spinner from './components/Spinner';
 
 class App extends Component {
     state = {
@@ -15,7 +16,7 @@ class App extends Component {
 
     handleChange = e => {
         const { users } = this.state;
-        const [name, id] = e.target.id.split('-');
+        const [id] = e.target.id.split('-');
         this.setState({ users: users.map(user => user.id !== id ? user : { ...user, name: e.target.value })});
     }
 
@@ -38,7 +39,7 @@ class App extends Component {
         const { actualPage } = this.state;
 
         this.setState({
-            actualPage: e.target.id == "previous" ? actualPage - 1 : actualPage + 1
+            actualPage: e.target.id === "previous" ? actualPage - 1 : actualPage + 1
         }, () => this.callInitialData());
     }
 
@@ -75,8 +76,9 @@ class App extends Component {
     render () {
         console.log('render page',this.state.users);
         this.state.users[0] && console.log(this.state.users[0].name);
+
         return (
-            <div className="App">
+        this.state.users.length ? <div className="App">
                 <Logo />
                 <Search filteredData={this.filteredData} />
                 <UserTable 
@@ -89,7 +91,7 @@ class App extends Component {
                     actualPage={this.state.actualPage} 
                 />
                 <Footer />
-            </div>
+            </div> : <Spinner />
         )
     }
 }
