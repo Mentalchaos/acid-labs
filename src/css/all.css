@@ -75,7 +75,7 @@
     background-color:  #292929;
     position: fixed;
     bottom: 0px;
-    padding: 20px;
+    padding: 4px;
     width: 100%;
     color: #fff;
     font-size: 12px;
@@ -102,7 +102,7 @@
     font-family: "Poppins Light";
 }
 
-.container-button:hover, .change-page-button:hover,.save-user-button:hover {
+.container-button:hover, .change-page-button:hover,.save-user-button:hover, .remove-button:hover {
     cursor: pointer;
     background: #39b54a;
     border-color: #39b54a;

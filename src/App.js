@@ -13,7 +13,8 @@ class App extends Component {
     state = {
         users: [],
         filteredUsers: [],
-        actualPage: 1
+        actualPage: 1,
+        maxPage: ''
     }
 
     componentDidMount(){
@@ -33,6 +34,27 @@ class App extends Component {
             default:
                 return {};
         }
+    }
+
+    addNewUser = () => {
+        const userData = [];
+        const inputs = document.querySelectorAll(".add-user-input");
+        inputs.forEach( data => userData.push(data.value));
+    
+        //@TODO, refactorize this
+        this.setState({
+            users: this.state.users.concat({
+                id: (this.state.users.length + 1).toString(),
+                name: userData[0],
+                email: userData[1],
+                address: { 
+                    city: userData[2]
+                },
+                phone: userData[3]
+            })
+        })
+        console.log('array',userData);
+        console.log(this.state.users);
     }
 
     handleChange = e => {
@@ -106,7 +128,7 @@ class App extends Component {
                     data={ filteredUsers.length ? filteredUsers : users }
                     removeUser={this.removeUser}
                 />
-                <NewUser />
+                <NewUser addNewUser={ this.addNewUser } />
                 <PageLimits 
                     changePage={this.changePage} 
                     actualPage={this.state.actualPage} 

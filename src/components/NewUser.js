@@ -1,13 +1,11 @@
 import React from 'react';
 import { ModalManager } from 'react-dynamic-modal';
 import MyModal from './MyModal';
-import '../css/all.css';
 
-const openModal = () => {
-    ModalManager.open( <div className="modalContainer"> <MyModal /></div>);
-}
-
-const NewUser = () => {
+const NewUser = ({ addNewUser }) => {
+    const openModal = () => {
+        ModalManager.open( <div className="modalContainer"> <MyModal addNewUser={addNewUser} /></div>);
+    }
     return (
         <div className="container-register">
             <button onClick={() => openModal()}>New user</button>

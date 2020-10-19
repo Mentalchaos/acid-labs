@@ -1,35 +1,32 @@
-import React, { Component } from 'react';
-import { Modal, Effect} from 'react-dynamic-modal';
+import React from 'react';
+import { Modal, Effect } from 'react-dynamic-modal';
 
-class MyModal extends Component {
-    render() {
-        return(
-            <Modal
-                effect={Effect.FlipVertical3D} className="modalContainer">
-                    <form className="user-form">
+const MyModal = ({ addNewUser }) => {
+    return (
+        <Modal effect={Effect.FlipVertical3D} className="modalContainer">
+            <div className="user-form">
                 <div>
                     <label>Name</label>
-                    <input isrequired="true" type="text" />
+                    <input className="add-user-input" isrequired="true" type="text" />
                 </div>
                 <div>
                     <label>Email</label>
-                    <input isrequired="true" type="email" />
+                    <input className="add-user-input" isrequired="true" type="email" />
                 </div>
                 <div>
                     <label>City</label>
-                    <input isrequired="true" type="text" />
+                    <input className="add-user-input" isrequired="true" type="text" />
                 </div>
                 <div>
                     <label>Phone</label>
-                    <input isrequired="true" type="text" />
+                    <input className="add-user-input" isrequired="true" type="text" />
                 </div>
-               <div className="container-button">
-                   <button className="save-user-button" type="submit">Save</button>
+                <div className="container-button">
+                    <button onClick={addNewUser}  className="save-user-button">Save</button>
                 </div>
-            </form>
-            </Modal>
-        )
-    }
+            </div>
+        </Modal>
+    )
 }
 
 MyModal.displayName = 'MyModal';
