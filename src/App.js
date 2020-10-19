@@ -15,33 +15,48 @@ class App extends Component {
         actualPage: 1
     }
 
-    handleChange = e => {
-        const { users } = this.state;
-        const [id] = e.target.id.split('-');
-        this.setState({ users: users.map(user => user.id !== id ? user : { ...user, name: e.target.value })});
-    }
-
-    removeUser = e => {
-        const id  = e.target.id.split('-')[1];
-        this.setState({
-            users: this.state.users.filter( data => data.id !== id)
-        })
-    }
-
-    filteredData = e => {
-        console.log(e.target.value);
-    }
-
     componentDidMount(){
         this.callInitialData();
     }
 
+    setField = (field, value) => {
+        switch (field) {
+            case 'name':
+                return { name: value };
+            case 'email':
+                return { email: value };
+            case 'city':
+                return { city: value };
+            case 'phone':
+                return { phone: value };
+            default:
+                return {};
+        }
+    }
+
+    handleChange = e => {
+        const { setField, state } = this;
+        const { users } = state;
+        const { id, value } = e.target;
+        const [name, newId] = id.split('-');
+        this.setState({ users: users.map(user => user.id !== newId ? user : { ...user, ...setField(name, value) })});
+    }
+
+    removeUser = e => {
+        const id  = e.target.id.split('-')[1];
+        this.setState({ users: this.state.users.filter( data => data.id !== id) });
+    }
+
+    filteredData = e => {
+        const { value } = e.target;
+        if (!value.trim().length) return;
+        this.setState({ users: this.state.users.filter(user => new RegExp(value + '.*').test(user.name)) });
+    }
+
     changePage = e => {
         const { actualPage } = this.state;
-
-        this.setState({
-            actualPage: e.target.id === "previous" ? actualPage - 1 : actualPage + 1
-        }, () => this.callInitialData());
+        const newActualPage = e.target.id === "previous" ? actualPage - 1 : actualPage + 1;
+        this.setState({ actualPage: newActualPage }, () => this.callInitialData());
     }
 
     callInitialData = () => {
@@ -70,14 +85,11 @@ class App extends Component {
                     }
                 }
             }`
-        })
-        }).then(res => res.json()).then( res => this.setState({ users: res.data.users.data }))
+        })}).then(res => res.json()).then(res => this.setState({ users: res.data.users.data }));
     }
 
     render () {
         console.log('render page',this.state.users);
-        this.state.users[0] && console.log(this.state.users[0].name);
-
         return (
         this.state.users.length ? <div className="App">
                 <Logo />
