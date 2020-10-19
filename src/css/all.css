@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Poppins Light';
+    src: url('../assets/fonts/Poppins-ExtraLight.otf');
+}
+
+* { 
+    font-family: "Poppins" !important;
+}
+
+.inputValue {
+    font-family: "Poppins Light" !important;
+}
+
 .acid-logo {
     height: 80px;
     width: 300px;

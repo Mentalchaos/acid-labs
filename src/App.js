@@ -72,11 +72,12 @@ class App extends Component {
     }
 
     render () {
-        console.log('render page',this.state.actualPage);
+        console.log('render page',this.state.users);
+        this.state.users[0] && console.log(this.state.users[0].name);
         return (
             <div className="App">
                 <Logo />
-                <Search />
+                <Search filteredData={this.filteredData} />
                 <UserTable 
                     handleChange={this.handleChange} 
                     data={this.state.users}
@@ -84,7 +85,8 @@ class App extends Component {
                 />
                 <PageLimits 
                     changePage={this.changePage} 
-                    actualPage={this.state.actualPage} />
+                    actualPage={this.state.actualPage} 
+                />
             </div>
         )
     }
