@@ -90,7 +90,7 @@
     color: #39b54a;
 }
 
-.remove-button, .change-page-button {
+.remove-button, .change-page-button, .save-user-button {
     background: #333333;
     color: #fff;
     font-size: 13px;
@@ -102,7 +102,7 @@
     font-family: "Poppins Light";
 }
 
-.change-page-button:hover {
+.container-button:hover, .change-page-button:hover,.save-user-button:hover {
     cursor: pointer;
     background: #39b54a;
     border-color: #39b54a;
@@ -110,19 +110,15 @@
     text-decoration: none;
 }
 
-.remove-button:hover {
-    cursor: pointer;
-    background: #39b54a;
-    border-color: #39b54a;
-    color: #333333;
-    text-decoration: none;
+.save-user-button {
+    width: 80px;
 }
 
 .change-page-button {
 
 }
 
-.spinner{
+.spinner {
     width:100px;
     height:100px;
     border-radius:50%;
@@ -165,14 +161,19 @@
     text-decoration: none;
 }
 
-.user-form {
+.user-form, .container-button {
     text-align: left;
-    margin: 40px;
+    margin: 50px;
+    display: flex;
+}
+
+.container-button {
+    margin: 0;
 }
 
 .modalContainer > div {
     border-radius: 10px;
-    width: 400px;
+    width: 100%;
 }
 
 .container-register {

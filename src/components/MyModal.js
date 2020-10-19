@@ -23,7 +23,9 @@ class MyModal extends Component {
                     <label>Phone</label>
                     <input isrequired="true" type="text" />
                 </div>
-               <div className="container-button"><button type="submit">Guardar</button></div>
+               <div className="container-button">
+                   <button className="save-user-button" type="submit">Save</button>
+                </div>
             </form>
             </Modal>
         )

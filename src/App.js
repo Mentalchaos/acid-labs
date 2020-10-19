@@ -68,8 +68,8 @@ class App extends Component {
                     users (
                         options: {
                             paginate: {
-                                page: ${this.state.actualPage}
-                                limit: 3
+                                page: 1
+                                limit: 10
                             }
                         }
                     )
@@ -90,6 +90,9 @@ class App extends Component {
 
     render () {
         console.log('render page',this.state.users);
+        this.state.users[0] && console.log(this.state.users[0].name);
+        console.log('render page quantity', this.state.users.length);
+
         return (
         this.state.users.length ? <div className="App">
                 <Logo />
