@@ -12,6 +12,7 @@ import NewUser from './components/NewUser';
 class App extends Component {
     state = {
         users: [],
+        filteredUsers: [],
         actualPage: 1
     }
 
@@ -49,8 +50,9 @@ class App extends Component {
 
     filteredData = e => {
         const { value } = e.target;
-        if (!value.trim().length) return;
-        this.setState({ users: this.state.users.filter(user => new RegExp(value + '.*').test(user.name)) });
+        if (!value.trim().length) return this.setState({ filteredUsers: [] });
+        const filteredUsers = [...this.state.users].filter(user => new RegExp(value.toLowerCase() + '.*').test(user.name.toLowerCase()));
+        this.setState({ filteredUsers });
     }
 
     changePage = e => {
@@ -93,13 +95,15 @@ class App extends Component {
         this.state.users[0] && console.log(this.state.users[0].name);
         console.log('render page quantity', this.state.users.length);
 
+        const { users, filteredUsers } = this.state;
+
         return (
         this.state.users.length ? <div className="App">
                 <Logo />
                 <Search filteredData={this.filteredData} />
                 <UserTable 
                     handleChange={this.handleChange} 
-                    data={this.state.users}
+                    data={ filteredUsers.length ? filteredUsers : users }
                     removeUser={this.removeUser}
                 />
                 <NewUser />
