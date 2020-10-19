@@ -22,7 +22,7 @@
 }
 
 .logo-container {
-    background-color: rgb(41, 41, 41);
+    background-color: #292929;
     width: 100%;
     margin: auto;
     text-align: left;
@@ -38,12 +38,13 @@
 }
 
 .table ,th, td {
-    border-bottom: 1px solid rgb(41, 41, 41);
+    border-bottom: 1px solid #292929;
     padding: 1.3em;
 }
 
 .table-container {
-    margin-left: 11em;
+    display: flex;
+    justify-content: center;
 }
 
 .container-search {
@@ -59,6 +60,9 @@
     font-size: 15px;
     margin-bottom: 10px;
     text-align: center;
+    outline: none;
+    border: transparent;
+    border-bottom: 1px solid #39b54a;
 }
 
 .container-page-limits {
@@ -66,3 +70,21 @@
     margin-left: 71.5em;
 }
 
+.container-footer {
+    background-color:  #292929;
+    position: fixed;
+    bottom: 0px;
+    padding: 20px;
+    width: 100%;
+    color: #fff;
+    font-size: 12px;
+}
+
+.container-footer > p {
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container-footer > p > strong {
+    color: #39b54a;
+}

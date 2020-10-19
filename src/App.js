@@ -3,6 +3,7 @@ import Logo from './components/Logo';
 import UserTable from './components/UserTable';
 import Search from './components/Search';
 import PageLimits from './components/PageLimits';
+import Footer from './components/Footer';
 //import data from './mockData.json';
 import './css/all.css';
 
@@ -87,6 +88,7 @@ class App extends Component {
                     changePage={this.changePage} 
                     actualPage={this.state.actualPage} 
                 />
+                <Footer />
             </div>
         )
     }
