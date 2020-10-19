@@ -2,30 +2,34 @@ import React from 'react';
 import User from './User';
 import '../css/all.css';
 
-const UserTable = ({ data }) => {
+const UserTable = ({ data, handleChange }) => {
     return(
         <div className="table-container">
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Email</th>
+                        <th>City</th>
+                        <th>Phone</th>
                         <th className="green">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map(data => {
-                    const {id, name, description } = data;
+                    { data.map(data => {
+                    const {id, name, email, phone } = data;
+                    const { city } = data.address
                     return(  
                         <User
                             key={id}
                             id={id}
                             name={name}
-                            description={description}
+                            email={email}
+                            phone={phone}
+                            city={city}
+                            handleChange={handleChange}
                         />
-                    )
-                    })
+                    )})
                 }
                 </tbody>
                 </table>
