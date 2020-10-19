@@ -1,10 +1,10 @@
 import React from 'react';
 import '../css/all.css';
 
-const Search = () => {
+const Search = ({ filteredData }) => {
     return (
         <div className="container-search">
-            <input type="text" placeholder="Search..."/>
+            <input onChange={filteredData} type="text" defaultValue="" placeholder="Search..."/>
         </div>
     )
 }

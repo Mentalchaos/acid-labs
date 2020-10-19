@@ -2,7 +2,7 @@ import React from 'react';
 import User from './User';
 import '../css/all.css';
 
-const UserTable = ({ data, handleChange }) => {
+const UserTable = ({ data, handleChange, removeUser }) => {
     return(
         <div className="table-container">
             <table className="table">
@@ -28,6 +28,7 @@ const UserTable = ({ data, handleChange }) => {
                             phone={phone}
                             city={city}
                             handleChange={handleChange}
+                            removeUser={removeUser}
                         />
                     )})
                 }

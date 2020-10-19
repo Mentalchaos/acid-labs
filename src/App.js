@@ -8,23 +8,40 @@ import './css/all.css';
 
 class App extends Component {
     state = {
-        users: []
+        users: [],
+        actualPage: 1
     }
 
     handleChange = e => {
-        this.setState({
+        const { users } = this.state;
+        const [name, id] = e.target.id.split('-');
+        this.setState({ users: users.map(user => user.id !== id ? user : { ...user, name: e.target.value })});
+    }
 
+    removeUser = e => {
+        const id  = e.target.id.split('-')[1];
+        this.setState({
+            users: this.state.users.filter( data => data.id !== id)
         })
-        
-        console.log(e.target.id);
+    }
+
+    filteredData = e => {
+        console.log(e.target.value);
     }
 
     componentDidMount(){
         this.callInitialData();
     }
 
+    changePage = e => {
+        const { actualPage } = this.state;
+
+        this.setState({
+            actualPage: e.target.id == "previous" ? actualPage - 1 : actualPage + 1
+        }, () => this.callInitialData());
+    }
+
     callInitialData = () => {
-        const eaea = 1;
         fetch("https://graphqlzero.almansi.me/api", {
             "method": "POST",
             "headers": { "content-type": "application/json" },
@@ -33,7 +50,7 @@ class App extends Component {
                     users (
                         options: {
                             paginate: {
-                                page: ${eaea}
+                                page: ${this.state.actualPage}
                                 limit: 3
                             }
                         }
@@ -55,13 +72,19 @@ class App extends Component {
     }
 
     render () {
-        console.log(this.state.users);
+        console.log('render page',this.state.actualPage);
         return (
             <div className="App">
                 <Logo />
                 <Search />
-                <UserTable handleChange={this.handleChange} data={this.state.users}/>
-                <PageLimits />
+                <UserTable 
+                    handleChange={this.handleChange} 
+                    data={this.state.users}
+                    removeUser={this.removeUser}
+                />
+                <PageLimits 
+                    changePage={this.changePage} 
+                    actualPage={this.state.actualPage} />
             </div>
         )
     }
