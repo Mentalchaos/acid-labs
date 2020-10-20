@@ -1,11 +1,11 @@
 import React from 'react';
 
-const PageLimits = ({ changePage, actualPage }) => {
+const PageLimits = ({ changePage, actualPage, maxPage }) => {
     return (
         <div className="container-page-limits">
-            { actualPage > 1 && <button id="previous" onClick={changePage} className="change-page-button">{`${"<"}`}</button> }
-            { actualPage < 3 && <button id="next" onClick={changePage} className="change-page-button">{`${">"}`}</button> }
-            <p> { actualPage } </p>
+            { actualPage > 0 && <button id="previous" onClick={changePage} className="change-page-button">{`${"<"}`}</button> }
+            { actualPage < maxPage - 1 && <button id="next" onClick={changePage} className="change-page-button">{`${">"}`}</button> }
+            <p> { actualPage + 1 } </p>
         </div>
     )
 }

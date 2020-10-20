@@ -1,3 +1,7 @@
+/*
+    Added Poppins font-family, same font used in Acid Labs webPage
+    Also tried to make the webpage using similar colors from Acid Lab Logo
+*/
 @font-face {
     font-family: 'Poppins';
     src: url('../assets/fonts/Poppins-Regular.otf');

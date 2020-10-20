@@ -1,24 +1,49 @@
 import React, { Component } from 'react';
+
+// MockData here for testing purposes
+// import data from './mockData.json';
+
+// Components
 import Logo from './components/Logo';
 import UserTable from './components/UserTable';
 import Search from './components/Search';
 import PageLimits from './components/PageLimits';
 import Footer from './components/Footer';
-//import data from './mockData.json';
-import './css/all.css';
 import Spinner from './components/Spinner';
 import NewUser from './components/NewUser';
+
+// CSS
+import './css/all.css';
 
 class App extends Component {
     state = {
         users: [],
         filteredUsers: [],
-        actualPage: 1,
-        maxPage: ''
+        actualPage: 0,
+        maxPage: 0,
+        showUser: []
     }
 
+    // Just obtaining the data from graphql API
     componentDidMount(){
         this.callInitialData();
+    }
+
+    // Calling this function many times due to fake backend not sending dynamic page limit
+    showUser = () => {
+        const { users } = this.state;
+        const backToTheFuture = [...users];
+        let newData = [];
+
+        while (backToTheFuture.length > 0) {
+            newData.push(backToTheFuture.splice(0,3));
+            if(backToTheFuture.length === 0){
+                this.setState({
+                    showUser: newData,
+                    maxPage: Math.ceil(this.state.users.length / 3)
+                })
+            }
+        }
     }
 
     setField = (field, value) => {
@@ -31,8 +56,7 @@ class App extends Component {
                 return { city: value };
             case 'phone':
                 return { phone: value };
-            default:
-                return {};
+            default: return {};
         }
     }
 
@@ -52,9 +76,7 @@ class App extends Component {
                 },
                 phone: userData[3]
             })
-        })
-        console.log('array',userData);
-        console.log(this.state.users);
+        }, () => this.showUser())
     }
 
     handleChange = e => {
@@ -67,7 +89,7 @@ class App extends Component {
 
     removeUser = e => {
         const id  = e.target.id.split('-')[1];
-        this.setState({ users: this.state.users.filter( data => data.id !== id) });
+        this.setState({ users: this.state.users.filter( data => data.id !== id) }, () => this.showUser());
     }
 
     filteredData = e => {
@@ -80,7 +102,7 @@ class App extends Component {
     changePage = e => {
         const { actualPage } = this.state;
         const newActualPage = e.target.id === "previous" ? actualPage - 1 : actualPage + 1;
-        this.setState({ actualPage: newActualPage }, () => this.callInitialData());
+        this.setState({ actualPage: newActualPage });
     }
 
     callInitialData = () => {
@@ -109,29 +131,26 @@ class App extends Component {
                     }
                 }
             }`
-        })}).then(res => res.json()).then(res => this.setState({ users: res.data.users.data }));
+        })}).then(res => res.json()).then(res => this.setState({ users: res.data.users.data})).then(() => this.showUser());
     }
 
     render () {
-        console.log('render page',this.state.users);
-        this.state.users[0] && console.log(this.state.users[0].name);
-        console.log('render page quantity', this.state.users.length);
-
-        const { users, filteredUsers } = this.state;
+        const { filteredUsers, showUser, actualPage, maxPage } = this.state;
 
         return (
-        this.state.users.length ? <div className="App">
+        this.state.showUser.length ? <div className="App">
                 <Logo />
                 <Search filteredData={this.filteredData} />
                 <UserTable 
                     handleChange={this.handleChange} 
-                    data={ filteredUsers.length ? filteredUsers : users }
+                    data={ filteredUsers.length ? filteredUsers : showUser[actualPage] }
                     removeUser={this.removeUser}
                 />
                 <NewUser addNewUser={ this.addNewUser } />
                 <PageLimits 
-                    changePage={this.changePage} 
-                    actualPage={this.state.actualPage} 
+                    changePage={this.changePage}
+                    actualPage={this.state.actualPage}
+                    maxPage={maxPage}
                 />
                 <Footer />
             </div> : <Spinner />

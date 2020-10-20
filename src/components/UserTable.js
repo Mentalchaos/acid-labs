@@ -2,7 +2,6 @@ import React from 'react';
 import User from './User';
 
 const UserTable = ({ data, handleChange, removeUser }) => {
-
     return (
     <div className="table-container">
         <table className="table">
