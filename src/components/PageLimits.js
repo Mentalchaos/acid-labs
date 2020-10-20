@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PageLimits = ({ changePage, actualPage, maxPage }) => {
     return (
@@ -9,6 +10,12 @@ const PageLimits = ({ changePage, actualPage, maxPage }) => {
         </div>
     )
 }
+
+PageLimits.propTypes = {
+    changePage: PropTypes.func,
+    handleChange: PropTypes.func,
+    maxPage: PropTypes.number
+};
 
 PageLimits.displayName = 'PageLimits';
 

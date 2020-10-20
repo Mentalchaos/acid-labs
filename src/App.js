@@ -142,6 +142,7 @@ class App extends Component {
 
     render () {
         const { filteredUsers, showUser, actualPage, maxPage } = this.state;
+        console.log(showUser);
 
         return (
         this.state.showUser.length ? <div className="App">

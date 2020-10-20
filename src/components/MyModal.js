@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Effect } from 'react-dynamic-modal';
+import PropTypes from 'prop-types';
 
 const MyModal = ({ addNewUser }) => {
     return (
@@ -31,6 +32,10 @@ const MyModal = ({ addNewUser }) => {
         </Modal>
     )
 }
+
+MyModal.propTypes = {
+    addNewUser: PropTypes.func
+};
 
 MyModal.displayName = 'MyModal';
 

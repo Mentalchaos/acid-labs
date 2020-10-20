@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Search = ({ filteredData }) => {
     return (
@@ -7,6 +8,10 @@ const Search = ({ filteredData }) => {
         </div>
     )
 }
+
+Search.propTypes = {
+    Search: PropTypes.array,
+};
 
 Search.displayName = 'Search';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const User = ({ id, name, city, email, phone, handleChange, removeUser }) => {
     return (
@@ -13,6 +14,16 @@ const User = ({ id, name, city, email, phone, handleChange, removeUser }) => {
         </tr>
     )
 }
+
+User.propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string,
+    city: PropTypes.string,
+    email: PropTypes.string,
+    phone: PropTypes.string,
+    handleChange: PropTypes.func,
+    removeUser: PropTypes.func
+};
 
 User.displayName = 'User';
 

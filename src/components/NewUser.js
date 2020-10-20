@@ -1,6 +1,7 @@
 import React from 'react';
 import { ModalManager } from 'react-dynamic-modal';
 import MyModal from './MyModal';
+import PropTypes from 'prop-types';
 
 const NewUser = ({ addNewUser }) => {
     const openModal = () => {
@@ -12,6 +13,10 @@ const NewUser = ({ addNewUser }) => {
         </div>
     )
 }
+
+NewUser.propTypes = {
+    addNewUser: PropTypes.func
+};
 
 NewUser.displayName = 'NewUser';
 

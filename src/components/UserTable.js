@@ -1,5 +1,6 @@
 import React from 'react';
 import User from './User';
+import PropTypes from 'prop-types';
 
 const UserTable = ({ data, handleChange, removeUser }) => {
     return (
@@ -38,5 +39,11 @@ const UserTable = ({ data, handleChange, removeUser }) => {
 }
 
 UserTable.displayName = 'Table';
+
+UserTable.propTypes = {
+    data: PropTypes.array,
+    handleChange: PropTypes.func,
+    removeUser: PropTypes.func
+};
 
 export default UserTable;
