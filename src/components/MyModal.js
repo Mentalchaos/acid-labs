@@ -6,22 +6,24 @@ const MyModal = ({ addNewUser }) => {
     return (
         <Modal effect={Effect.FlipVertical3D} className="modalContainer">
             <div className="user-form">
-                <div>
-                    <label>Name</label>
+                <h1>Register</h1>
+                <div className="container-input">
+                    <label>Name:</label>
                     <input className="add-user-input" isrequired="true" type="text" />
                 </div>
-                <div>
-                    <label>Email</label>
+                <div className="container-input">
+                    <label>Email:</label>
                     <input className="add-user-input" isrequired="true" type="email" />
                 </div>
-                <div>
-                    <label>City</label>
+                <div className="container-input">
+                    <label>City:</label>
                     <input className="add-user-input" isrequired="true" type="text" />
                 </div>
-                <div>
-                    <label>Phone</label>
+                <div className="container-input">
+                    <label>Phone:</label>
                     <input className="add-user-input" isrequired="true" type="text" />
                 </div>
+                <div className="line"></div>
                 <div className="container-button">
                     <button onClick={addNewUser}  className="save-user-button">Save</button>
                 </div>
