@@ -32,6 +32,7 @@
 .inputValue {
     font-family: "Poppins Light" !important;
     outline-color: #39b54a;
+    font-weight: 900;
 }
 
 .acid-logo {
@@ -57,7 +58,15 @@
 
 .table ,th, td {
     border-bottom: 1px solid #292929;
-    padding: 1.3em;
+    padding: 1.5em;
+}
+
+.table, th {
+    padding: 15px;
+}
+
+.table {
+    border-bottom: 3px solid #39b54a;
 }
 
 .table-container {
@@ -92,7 +101,7 @@
     background-color:  #292929;
     position: fixed;
     bottom: 0px;
-    padding: 4px;
+    padding: 10px;
     width: 100%;
     color: #fff;
     font-size: 12px;
@@ -174,21 +183,57 @@
     text-decoration: none;
 }
 
-.user-form, .container-button {
-    text-align: left;
-    margin: 50px;
-    display: flex;
+.user-form {
+    display: grid;
+    justify-items: center;
+    margin-top: 10px;
+}
+
+.modalContainer > div > div {
+    border-radius: 10px !important;
+    width: 350px !important;
+    background-color: #f2f2f2 !important;
+    margin-top: 100px !important;
 }
 
 .container-button {
     margin: 0;
+    margin-top: 15px;
+    display: inline-block;
+    border-left: 5px solid  #39b54a;
+    box-shadow: 2.5px 1.5px 2px;
 }
 
-.modalContainer > div {
-    border-radius: 10px;
-    width: 100%;
+.container-input {
+    margin: 5px;
+}
+
+.container-input > input {
+    height: 25px;
+    width: 200px;
+    outline-color: #39b54a;
+    color: rgba(78, 78, 78, 0.959);
+}
+
+.container-input > label{
+    display: block;
+    text-align: left;
 }
 
 .container-register {
     text-align: center;
+}
+
+.user-form > h1 {
+    border-bottom: 4px solid #39b54a;
+    width: 40px;
+    margin-right: 170px;
+    line-height: 35px;
+}
+
+.line {
+    border: 2px solid #39b54a;
+    width: 100%;
+    margin-right: 265px;
+    margin-top: 20px;
 }

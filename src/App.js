@@ -40,7 +40,7 @@ class App extends Component {
             if(backToTheFuture.length === 0){
                 this.setState({
                     showUser: newData,
-                    maxPage: Math.ceil(this.state.users.length / 3)
+                    maxPage: Math.ceil(users.length / 3)
                 })
             }
         }
