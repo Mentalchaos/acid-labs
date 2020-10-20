@@ -25,6 +25,9 @@ const MyModal = ({ addNewUser }) => {
                     <button onClick={addNewUser}  className="save-user-button">Save</button>
                 </div>
             </div>
+            <div className="error-wrap">
+                <span className="error-message hidden">Missing fields to validate</span>
+            </div>
         </Modal>
     )
 }

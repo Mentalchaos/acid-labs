@@ -53,7 +53,7 @@ class App extends Component {
             case 'email':
                 return { email: value };
             case 'city':
-                return { city: value };
+                return { address: { city: value } };
             case 'phone':
                 return { phone: value };
             default: return {};
@@ -61,8 +61,14 @@ class App extends Component {
     }
 
     addNewUser = () => {
-        const userData = [];
         const inputs = document.querySelectorAll(".add-user-input");
+        const errorMessage = document.querySelector('.error-message');
+        const emptyInput = Object.values(inputs).some(element => !element.value.trim().length);
+
+        if (emptyInput) return errorMessage.classList.remove('hidden');
+
+        errorMessage.classList.add('hidden');
+        const userData = [];
         inputs.forEach( data => userData.push(data.value));
     
         //@TODO, refactorize this
@@ -84,7 +90,7 @@ class App extends Component {
         const { users } = state;
         const { id, value } = e.target;
         const [name, newId] = id.split('-');
-        this.setState({ users: users.map(user => user.id !== newId ? user : { ...user, ...setField(name, value) })});
+        this.setState({ users: users.map(user => user.id !== newId ? user : { ...user, ...setField(name, value) })}, () => this.showUser());
     }
 
     removeUser = e => {

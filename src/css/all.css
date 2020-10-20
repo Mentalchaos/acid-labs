@@ -16,6 +16,19 @@
     font-family: "Poppins" !important;
 }
 
+.error-wrap {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.error-message {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
 .inputValue {
     font-family: "Poppins Light" !important;
     outline-color: #39b54a;
