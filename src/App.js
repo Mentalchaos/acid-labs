@@ -61,6 +61,12 @@ class App extends Component {
     }
 
     addNewUser = () => {
+        if(this.state.actualPage === -1){
+            this.setState({
+                actualPage: 0
+            })
+        }
+
         const inputs = document.querySelectorAll(".add-user-input");
         const errorMessage = document.querySelector('.error-message');
         const emptyInput = Object.values(inputs).some(element => !element.value.trim().length);
@@ -74,7 +80,7 @@ class App extends Component {
         //@TODO, refactorize this
         this.setState({
             users: this.state.users.concat({
-                id: (this.state.users.length + 1).toString(),
+                id: this.state.users.length === 0 ? "1" : (this.state.users.length + 1).toString(),
                 name: userData[0],
                 email: userData[1],
                 address: { 
@@ -96,6 +102,24 @@ class App extends Component {
     removeUser = e => {
         const id  = e.target.id.split('-')[1];
         this.setState({ users: this.state.users.filter( data => data.id !== id) }, () => this.showUser());
+    }
+
+    popLastUser = (e) => {
+        const { showUser, actualPage } = this.state;
+
+        if(showUser.length - 1 === actualPage && showUser[actualPage].length === 1){
+            this.setState({
+                actualPage: actualPage - 1
+            }, () => { 
+                const { users } = this.state;
+                users.pop();
+                this.setState({
+                    users: users
+                }, () => this.showUser())
+            })
+        } else {
+            this.removeUser(e);
+        }
     }
 
     filteredData = e => {
@@ -142,7 +166,6 @@ class App extends Component {
 
     render () {
         const { filteredUsers, showUser, actualPage, maxPage } = this.state;
-        console.log(showUser);
 
         return (
         this.state.showUser.length ? <div className="App">
@@ -150,8 +173,8 @@ class App extends Component {
                 <Search filteredData={this.filteredData} />
                 <UserTable 
                     handleChange={this.handleChange} 
-                    data={ filteredUsers.length ? filteredUsers : showUser[actualPage] }
-                    removeUser={this.removeUser}
+                    data={ filteredUsers.length ? filteredUsers : showUser[actualPage]}
+                    removeUser={this.popLastUser}
                 />
                 <NewUser addNewUser={ this.addNewUser } />
                 <PageLimits 

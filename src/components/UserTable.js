@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const UserTable = ({ data, handleChange, removeUser }) => {
     return (
-    <div className="table-container">
+    data ? <div className="table-container">
         <table className="table">
             <thead>
                 <tr>
@@ -34,6 +34,10 @@ const UserTable = ({ data, handleChange, removeUser }) => {
             }
             </tbody>
             </table> 
+        </div> : 
+        <div className="no-data">
+            <p>There is nothing to see here</p>
+            <p className="green">maybe try to add another user :)</p>
         </div>
     )
 }
